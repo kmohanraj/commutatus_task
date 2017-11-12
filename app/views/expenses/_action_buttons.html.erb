@@ -1,0 +1,46 @@
+<div class="row action-button-margins">
+    <div class="col-md-3">
+      <button type="button" class= "btn btn-outline-primary btn-md" data-toggle="modal" data-target="#ModalAddFinance">Add new bill</button>
+    </div>
+
+    <div class="col-md-3">
+      <%= link_to "Show All Bills", root_path, class: "btn btn-outline-primary btn-md" %>
+    </div>
+
+    <div class="col-md-3">
+      <%= link_to "Show All Expense", expenses_path(bill: "finance_expense"), class: "btn btn-outline-primary btn-md" %>
+    </div>
+
+    <div class="col-md-3">
+      <%= link_to "Today", expenses_path(bill: "today"), class: "btn btn-outline-primary btn-md" %>
+    </div>
+    <div class="col-4">
+      <%= form_tag(expenses_path, method: :get) do %>
+        <%#= text_field_tag :bill, params[:bill], class: 'datepicker' %>
+        <%= date_field_tag :bill, params[:bill] %>
+        <%= submit_tag 'Search', name: nil ,class: "btn btn-outline-primary btn-md" %>
+      <% end %>
+    </div>       
+
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="ModalAddFinance" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Finance Transaction</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="errors_invoice">
+        </div>
+        <%= render "form" %>
+      </div>
+    </div>
+  </div>
+</div>
+
